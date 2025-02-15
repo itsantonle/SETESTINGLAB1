@@ -5,10 +5,13 @@ LEGAYADA SURRILLA - UNDER THE MIT LICENSE-- this repo is forked only FOR ACADEMI
 - no profit or desire to pulicize this repo for a for-profit project. Storybook js is installed into the project.
 
 Project by Brad Traversy (c) 2024
+original repo link: https://github.com/bradtraversy/react-crash-2024
 
 # Running storybook
 
-Make sure all the dependencies of this project are installed for this to work
+Make sure all the dependencies of this project are installed for this to work.
+The components are styled with Tailwind, and storybook is configured to show this in the preview
+The project in written in Javascript, therefore there is minimal to nonexistent type support
 
 ```bash
 npm install
