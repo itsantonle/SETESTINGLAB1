@@ -1,14 +1,22 @@
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { FaMapMarker } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 
-const JobListing = ({ job, onClick }) => {
-  const [showFullDescription, setShowFullDescription] = useState(false)
+const JobListing = ({ job, initialDescBool = false, onToggle }) => {
+  const [showFullDescription, setShowFullDescription] =
+    useState(initialDescBool)
 
   let description = job.description
 
   if (!showFullDescription) {
     description = description.substring(0, 90) + '...'
+  }
+
+  // this is only created for testing purposes
+  const handleToggle = () => {
+    const reverseToggle = !showFullDescription
+    setShowFullDescription(reverseToggle)
+    if (onToggle) onToggle(reverseToggle)
   }
 
   return (
@@ -22,7 +30,7 @@ const JobListing = ({ job, onClick }) => {
         <div className="mb-5">{description}</div>
 
         <button
-          onClick={() => setShowFullDescription((prevState) => !prevState)}
+          onClick={handleToggle}
           className="text-indigo-500 mb-5 hover:text-indigo-600"
         >
           {showFullDescription ? 'Less' : 'More'}
@@ -38,7 +46,10 @@ const JobListing = ({ job, onClick }) => {
             {job.location}
           </div>
           <a
-            href={`/jobs/${job.id}`}
+            onClick={(e) => {
+              e.preventDefault()
+            }}
+            href={`http://localhost:3009/jobs/${job.id}`}
             className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
           >
             Read More
@@ -49,22 +60,21 @@ const JobListing = ({ job, onClick }) => {
   )
 }
 export default JobListing
-// JobListing.PropTypes = {
-//   job: Proptypes.shape({
-//     id: Proptypes.string.isRwquired,
-//     title: Proptypes.string.isRwquired,
-//       type: Prototypes.string
-//       "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as React or Angular.",
-//       "location": "Boston, MA",
-//       "salary": "$70K - $80K",
-//       "company": {
-//         "name": "NewTek Solutions",
-//         "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
-//         "contactEmail": "contact@teksolutions.com",
-//         "contactPhone": "555-555-5555"
-//       }
-
-//   })
-//   subtitle: PropTypes.string,
-//   mode: PropTypes.string,
-// }
+JobListing.PropTypes = {
+  job: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.string,
+    description: PropTypes.string,
+    location: PropTypes.string,
+    salary: PropTypes.string,
+    company: PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string,
+      contactEmail: PropTypes.string,
+      contactPhone: PropTypes.string,
+    }),
+  }),
+  initialDescBool: PropTypes.bool,
+  onToggle: PropTypes.func,
+}
