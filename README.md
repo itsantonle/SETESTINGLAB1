@@ -161,7 +161,7 @@ the stories and pages for the labs are:
 ```
 Hero.stories.js (Basic React Component with Props)
 Card.stories.jsx  ( Children Props and Play Functionality regarding links + Passed and Failed Interactions)
-JobListing.stories.jsx (State testing and stuff) (TO BE FINISHED )
+JobListing.stories.jsx (Actions, Play Functionality, Expect, + All Passed interactions)
 Pages.stories.jsx( TO BE IMPLEMENTED)
 
 ```
