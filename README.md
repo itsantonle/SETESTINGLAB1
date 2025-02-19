@@ -52,6 +52,7 @@ Hero.stories.js (Basic React Component with Props)
 Card.stories.jsx  ( Children Props and Play Functionality regarding links + Passed and Failed Interactions)
 JobListing.stories.jsx (Actions, Play Functionality, Expect, + All Passed interactions)
 AddJobPage.stories.jsx (Actions, Form)
+Spinner.stories.js(Basic React Component)
 
 ```
 
