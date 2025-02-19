@@ -5,9 +5,8 @@ export default {
   component: Spinner,
   tags: ['autodocs'],
   argTypes: {
-    mode: {
-      options: ['#4338c', '#36454F', '#DAF7A6'],
-      control: { type: 'select' },
+    loading: {
+      control: { type: 'boolean' },
     },
   },
 }
